@@ -1,0 +1,109 @@
+<div class="row align-items-center">
+  <div class="col ">
+    <a routerLink="/habits"> < Back</a>
+  </div>
+  <div class="col-auto ">
+    <button mdbBtn type="button" outline="true" class="btn btn-circle btn-sm  options" routerLink="/edit/{{habit_id}}">
+      <i class="fas fa-pen fa-3x"></i>
+    </button>
+
+    <button mdbBtn type="button" outline="true" class="btn btn-circle btn-sm  options" data-toggle="modal" data-target="#basicExample" (click)="frame.show()">
+      <i class="fas fa-trash-alt fa-3x"></i>
+    </button>
+  </div>
+</div>
+
+<div *ngIf='habit'>
+  <div class="row ">
+    <div class="col ">
+
+      <div class="row no-gutters align-items-center">
+        <div class="col ">
+          <h2>
+          {{habit.name}} 
+          </h2>
+        </div>
+
+        <div class="w-100"></div>
+    
+        <div class="col-auto justify-content-end">
+          <span *ngFor='let recent_date of recent_dates'><span [ngClass]="{
+            'round': true, 
+            'incomplete_badge': !recent_date.completed,
+            'complete_badge': recent_date.completed,  
+            'm-1': true}" > 
+          {{recent_date.day_letter}}
+          </span></span> 
+        </div>
+        <div class="col ">
+          <button mdbBtn type="button" outline="true" class="btn btn-circle btn-sm pill complete" (click)="deleteHabitRecord()" *ngIf='isComplete(habit); else elseBlock'>
+          <i class="fas fa-check fa-2x"></i>
+          Complete
+        </button>
+
+        <ng-template #elseBlock>
+          <button mdbBtn type="button" outline="true" class="btn btn-circle btn-sm pill incomplete" (click)="addHabitRecord()">
+            <i class="fas fa-check fa-2x"></i>
+            Incomplete
+          </button>
+        </ng-template>
+        </div>
+
+        <div class="w-100"></div>
+
+        <div class="col ">
+          <p class="mb-1" class="habit_text">
+          {{habit.description}} 
+          </p>
+          <div class="created_date">
+          Created: {{habit.created_date | date:'MMM dd, yyyy'}}
+          </div >
+        </div>
+
+      
+      </div>
+
+      <br><br>
+
+    </div>
+
+    <div class="col-sm-auto">
+      <div class="row ">
+        <div class="col border rounded mx-3">
+        <app-habit-calendar [heatmap]="heatmap" > </app-habit-calendar>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <hr>
+
+</div>
+
+
+
+<!--MODAL-->
+<div mdbModal #frame="mdbModal" class="modal fade top" id="frameModalTop" tabindex="-1" role="dialog"
+  aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm modal-notify modal-danger" role="document">
+    <!--Content-->
+    <div class="modal-content text-center">
+      <!--Header-->
+      <div class="modal-header d-flex justify-content-center">
+        <p class="heading">Are you sure?</p>
+      </div>
+
+      <!--Body-->
+      <div class="modal-body">
+        <mdb-icon fas icon="times" size="4x" class="animated rotateIn"></mdb-icon>
+      </div>
+
+      <!--Footer-->
+      <div class="modal-footer justify-content-center">
+        <a type="button" mdbBtn color="danger" outline="true" class="waves-effect" mdbWavesEffect (click)="deleteHabit()">Yes</a>
+        <a type="button" mdbBtn color="danger" class="waves-effect" mdbWavesEffect data-dismiss="modal" (click)="frame.hide()">No</a>
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>

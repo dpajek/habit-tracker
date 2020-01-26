@@ -1,0 +1,72 @@
+<br>
+<h2>My Habits</h2>
+<ul class="list-group">
+  <li class="list-group-item flex-column align-items-start" *ngFor='let habit of habits' >
+    <div class="row">
+      <div class="col ">
+        <h5 class="mb-1">
+          <a routerLink="/detail/{{habit.id}}" class="habit_title">
+            {{habit.name}} 
+          </a>
+        </h5>
+      </div>
+      <div class="col-auto justify-content-end ">
+        <span *ngFor='let recent_date of recent_dates'><span *ngIf='recent_date.habit_id === habit.id' [ngClass]="{
+            'round': true, 
+            'incomplete_badge': !recent_date.completed,
+            'complete_badge': recent_date.completed,  
+            'm-1': true}" > 
+          {{recent_date.day_letter}}
+        </span></span>
+        
+        <button mdbBtn type="button" outline="true" class="btn btn-circle btn-sm complete" *ngIf='isComplete(habit); else elseBlock'>
+          <i class="fas fa-check fa-2x"></i>
+        </button>
+
+        <ng-template #elseBlock>
+          <button mdbBtn type="button" outline="true" class="btn btn-circle btn-sm incomplete" (click)="completeHabit(habit)">
+            <i class="fas fa-check fa-2x"></i>
+          </button>
+        </ng-template>
+
+      </div>
+    </div>
+    <p class="mb-1" class="habit_text">
+      {{habit.description}} 
+    </p>
+  </li>
+</ul>
+
+<br><br>
+<h2>Add New Habit</h2>
+
+<ul class="list-group">
+  <li class="list-group-item flex-column align-items-start" >
+
+<!-- Material form group -->
+<form>
+  <!-- Grid row -->
+  <div class="form-row">
+    <!-- Grid column -->
+    <div class="col-sm">
+      <!-- Material input -->
+      <div class="md-form form-group">
+        <input mdbInput #habitNameV type="text" class="form-control" id="habitName">
+        <label for="habitName">Habit Name</label>
+      </div>
+      <!-- Material input -->
+      <div class="md-form form-group">
+        <textarea mdbInput #habitDescriptionV type="text" class="md-textarea form-control" rows="1" id="habitDescription" length="120" mdbCharCounter></textarea>
+        <label for="habitDescription">Description</label>
+      </div>
+    </div>
+    <!-- Grid column -->
+    <div class="col-auto align-self-end">
+      <button type="submit" mdbBtn class="square_button" (click)="addHabit(habitNameV.value,habitDescriptionV.value); habitNameV.value=''; habitDescriptionV.value=''">Add</button><br><br>
+    </div>
+  </div>
+</form>
+<!-- Material form group -->
+</li>
+</ul>
+<br>

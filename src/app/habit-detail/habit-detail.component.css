@@ -1,0 +1,144 @@
+
+/*
+Primary 40a028
+Dark 007000
+Light 75d258
+*/
+
+
+.habit_text { 
+            color:  #666; 
+        } 
+
+.round {
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+    line-height: 30px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    background-color: #222;    
+    color: #FFF;
+    text-align: center;  
+}
+
+.round.incomplete_badge {
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    line-height: 20px;
+    -moz-border-radius: 10px; 
+    border-radius: 10px;
+    background-color: #FFF;    
+    color: #CCC;
+    text-align: center;
+    -webkit-box-shadow: 0px 0px 0px 2px #CCC;
+    -moz-box-shadow: 0px 0px 0px 2px #CCC;
+    box-shadow: 0px 0px 0px 2px #CCC;
+    font-size: 0.7em;
+}
+
+.round.complete_badge {
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    line-height: 20px;
+    -moz-border-radius: 10px; 
+    border-radius: 10px;
+    background-color: #40a028;    
+    color: #FFF;
+    text-align: center;
+    -webkit-box-shadow: 0px 0px 0px 2px #40a028;
+    -moz-box-shadow: 0px 0px 0px 2px #40a028;
+    box-shadow: 0px 0px 0px 2px #40a028;
+    font-size: 0.7em;
+}
+
+
+.btn-circle.btn-sm { 
+            width: 28px; 
+            height: 28px; 
+            padding: 6px 0px; 
+            border-radius: 14px; 
+            font-size: 7px; 
+            text-align: center; 
+        } 
+
+.btn-circle.options { 
+            color:  #DDD; 
+            width: 26px; 
+            height: 26px;
+            border-radius: 13px;
+            -webkit-box-shadow: 0px 0px 0px 2px #FFF;
+            -moz-box-shadow: 0px 0px 0px 2px #FFF;
+            box-shadow: 0px 0px 0px 2px #FFF;
+        } 
+
+.btn-circle.options:hover { 
+            color:  #BBB; 
+            width: 26px; 
+            height: 26px;
+            border-radius: 13px;
+            -webkit-box-shadow: 0px 0px 0px 2px #FFF;
+            -moz-box-shadow: 0px 0px 0px 2px #FFF;
+            box-shadow: 0px 0px 0px 2px #FFF;
+        } 
+
+
+.btn-circle.incomplete { 
+            color:  #DDD; 
+            width: 26px; 
+            height: 26px;
+            border-radius: 13px;
+            -webkit-box-shadow: 0px 0px 0px 2px #CCC;
+            -moz-box-shadow: 0px 0px 0px 2px #CCC;
+            box-shadow: 0px 0px 0px 2px #CCC;
+        } 
+
+.btn-circle.incomplete:hover {
+  background-color: #FFF;
+  color:  #40a028;
+        }
+
+.btn-circle.complete { 
+            background-color: #40a028;
+            color:  #FFF;
+            width: 26px; 
+            height: 26px;
+            border-radius: 13px;
+            -webkit-box-shadow: 0px 0px 0px 3px #42A129;
+            -moz-box-shadow: 0px 0px 0px 3px #42A129;
+            box-shadow: 0px 0px 0px 3px #42A129;
+        } 
+
+.btn-circle.pill { 
+            width: 90px; 
+            height: 26px;
+            border-radius: 13px;
+            font-size: 8px; 
+        } 
+
+
+.square_button { 
+            background-color:  #007000; 
+            color:  #FFF; 
+        } 
+
+.created_date2 { 
+            background-color: #007000;
+            color:  #FFF;
+            width: 26px; 
+            height: 26px;
+            border-radius: 13px;
+            -webkit-box-shadow: 0px 0px 0px 3px #007000;
+            -moz-box-shadow: 0px 0px 0px 3px #007000;
+            box-shadow: 0px 0px 0px 0px #007000;
+            font-size: 12px;
+            padding: 3px 6px;
+        }
+
+.created_date { 
+
+            color:  #007000;
+            font-size: 12px;
+        }

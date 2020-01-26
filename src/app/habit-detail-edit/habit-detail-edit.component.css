@@ -1,0 +1,17 @@
+
+.square_button { 
+            background-color:  #007000; 
+            color:  #FFF; 
+        } 
+
+
+mdbInput, input[type=text]:focus:not([readonly]) + label, textarea[type=text]:focus:not([readonly]) + label { 
+            color: #40a028;
+        } 
+
+mdInput, textarea[type=text]:focus, input[type=text]:focus { 
+            box-shadow: 0 1px 0 0 #40a028 !important ;
+            border-bottom: 1px solid #40a028 !important; 
+
+        } 
+        

@@ -1,0 +1,27 @@
+<a routerLink="/detail/{{habit_id}}"> < Back</a>
+
+
+<!-- Material form group -->
+<form>
+  <!-- Grid row -->
+  <div class="form-row" *ngIf='habit'>
+    <!-- Grid column -->
+    <div class="col-sm">
+      <!-- Material input -->
+      <div class="md-form form-group">
+        <input mdbInput #habitNameV type="text" class="form-control" id="habitName" value="{{habit.name}}">
+        <label for="habitName">Habit Name</label>
+      </div>
+      <!-- Material input -->
+      <div class="md-form form-group">
+        <textarea mdbInput #habitDescriptionV type="text" class="md-textarea form-control" rows="1" id="habitDescription" length="120" mdbCharCounter>{{habit.description}}</textarea>
+        <label for="habitDescription">Description</label>
+      </div>
+    </div>
+    <!-- Grid column -->
+    <div class="col-auto align-self-end">
+      <button type="submit" mdbBtn class="square_button" (click)="updateHabit(habitNameV.value,habitDescriptionV.value)">Update</button><br><br>
+    </div>
+  </div>
+</form>
+<!-- Material form group -->
