@@ -1,6 +1,6 @@
 
 export const environment = {
-  production: false,
+  production: true,
   firebase: {
     apiKey: "AIzaSyDKqbWflc7EULr8beTlTyb2TQ1XW-0p-Fk",
     authDomain: "habit-tracker-38e6c.firebaseapp.com",
