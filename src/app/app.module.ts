@@ -22,6 +22,12 @@ import { XunkCalendarModule} from 'xunk-calendar';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { HabitDetailEditComponent } from './habit-detail-edit/habit-detail-edit.component';
 
+/* Firebase */
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { environment } from '../environments/environment';
+import { OldHabitService } from './old-habit.service';
+
 
 @NgModule({
   imports:  [ BrowserModule, FormsModule, AppRoutingModule, 
@@ -34,10 +40,12 @@ import { HabitDetailEditComponent } from './habit-detail-edit/habit-detail-edit.
                 InMemoryDataService, { dataEncapsulation: false }
               ),
               XunkCalendarModule,
-              MDBBootstrapModule.forRoot()
+              MDBBootstrapModule.forRoot(),
+              AngularFireModule.initializeApp(environment.firebaseConfig),
+              AngularFireDatabaseModule
             ],
   declarations: [ AppComponent, HelloComponent, HabitsComponent, HabitDetailComponent, HabitCalendarComponent, HabitDetailEditComponent],
   bootstrap:    [ AppComponent ],
-  providers: [HabitService, InMemoryDataService]
+  providers: [HabitService, InMemoryDataService, OldHabitService]
 })
 export class AppModule { }
