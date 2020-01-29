@@ -14,7 +14,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class HabitDetailComponent implements OnInit {
 
-  habit_id: number;
+  habit_id: string;
   habit: Habit;
   habit_records: Habit_Record[]; // declares as an array of type 
 
@@ -44,9 +44,15 @@ export class HabitDetailComponent implements OnInit {
     this.completed = false; // store habit ids for all completed habits
 
     //this.habitService.getHabitRecords()
-    this.habitService.getHabitRecordsHabitId(this.habit_id)
-      .subscribe(habit_records => {
-          this.habit_records = habit_records;
+    //this.habit_id
+    this.habitService.getHabitRecords()
+      .subscribe(data => {
+          this.habit_records = data.map(e => {
+            return {
+              id: e.payload.doc.id,
+              ...e.payload.doc.data()
+            } as Habit_Record;
+          })
 
           this.fillRecentDates(this.habit_id);
           
@@ -81,20 +87,35 @@ export class HabitDetailComponent implements OnInit {
   getHabit(): void {
     //+ converts a string to a number
     //const id = +this.route.snapshot.paramMap.get('id');
-    this.habit_id = +this.route.snapshot.paramMap.get('id');
+    this.habit_id = this.route.snapshot.paramMap.get('id');
     //this.habit = this.getHabitId(id)
 
     //this.habit = this.habitService.getHabitId(id)
 
     //subscribe to observable so it's async (place output into this.habit)
+
+    /*
     this.habitService.getHabitId(this.habit_id)
       .subscribe(habit => this.habit = habit);
+    */
 
+    let habits : Habit[];
+
+    this.habitService.getHabits()
+      .subscribe( data => {
+        habits = data.map(e => {
+          return {
+            id: e.payload.doc.id,
+            ...e.payload.doc.data()
+          } as Habit;
+        })
+      this.habit = habits.filter(item => item.id == this.habit_id)
+      });
       
   }
 
 
-fillRecentDates(habit_id: number): void {
+fillRecentDates(habit_id: string): void {
 
         var weekday = [];
         weekday[0] = "S";
@@ -160,7 +181,12 @@ fillRecentDates(habit_id: number): void {
 
     let new_habit_record : Habit_Record = {habit_id: this.habit_id, date: new_date};
 
+    this.recent_dates = []; // fill in info for last x days for all habits
+    this.completed = true;
+
     this.habitService.addHabitRecord(new_habit_record)
+
+    /*
       .subscribe(habit_record => {
         this.habit_records.push(habit_record);
         this.completed = true;
@@ -170,6 +196,7 @@ fillRecentDates(habit_id: number): void {
               + this.pad(new_date.getMonth()+1,2) 
               + this.pad(new_date.getDate(),2))] = 1;
       });
+    */
 
     //this.test = new_date.toString();
   }
@@ -214,10 +241,7 @@ fillRecentDates(habit_id: number): void {
 
   // true if passed habit is complete today (ie, habit record exists)
   isComplete(habit: Habit): boolean {
-    let new_date : Date = new Date;
-    new_date.setHours(0,0,0,0); // Strip timestamp from date
 
-    //check for duplicate date
     return this.completed; 
   }
 

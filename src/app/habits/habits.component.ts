@@ -128,10 +128,7 @@ export class HabitsComponent implements OnInit {
 
   // true if passed habit is complete today (ie, habit record exists)
   isComplete(habit: Habit): boolean {
-    let new_date : Date = new Date;
-    new_date.setHours(0,0,0,0); // Strip timestamp from date
 
-    //check for duplicate date
     return this.completed_ids.filter((item: any) => item === habit.id)
       .length > 0; 
   }
@@ -148,7 +145,11 @@ export class HabitsComponent implements OnInit {
 
     let new_habit_record : Habit_Record = {habit_id: habit.id, date: new_date};
 
+    this.recent_dates = []; // fill in info for last x days for all habits
+    this.completed_ids = []; // store habit ids for all completed habits
+
     this.habitService.addHabitRecord(new_habit_record);
+    
     /*
       .subscribe(habit_record => 
         this.completed_ids.push(habit_record.habit_id));
