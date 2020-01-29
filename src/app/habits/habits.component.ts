@@ -31,8 +31,16 @@ export class HabitsComponent implements OnInit {
   ngOnInit() {
 
     this.habitService.getHabits()
-      .subscribe(habits => {
-        this.habits = habits;
+      .subscribe( data => {
+        this.habits = data.map(e => {
+          return {
+            id: e.payload.doc.id,
+            ...e.payload.doc.data()
+          } as Habit;
+        })  
+        
+        //habits => {
+        //this.habits = habits;
 
         this.recent_dates = []; // fill in info for last x days for all habits
         this.completed_ids = []; // store habit ids for all completed habits
