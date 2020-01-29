@@ -8,7 +8,8 @@ import { Observable, of } from 'rxjs';
 
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
-import { AngularFireDatabase, AngularFireList, AngularFireObject} from '@angular/fire/database';
+//import { AngularFireDatabase, AngularFireList, AngularFireObject} from '@angular/fire/database';
+import { AngularFirestore} from '@angular/fire/firestore';
 
 @Injectable()
 export class HabitService {
@@ -19,16 +20,13 @@ export class HabitService {
   private habitsUrl = 'api/habits';  // URL to web api
   private habitRecordUrl = 'api/habit_record';  // URL to web api
 
-  habitsRef: AngularFireList<any>;
-  habitRef: AngularFireObject<any>;
-
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
   constructor(
     private http: HttpClient, 
-    private db: AngularFireDatabase) { }
+    private firestore: AngularFirestore) { }
 
   /*
   getHabits(): Observable<Habit[]>{
@@ -39,8 +37,7 @@ export class HabitService {
 //
   /** GET habits from the server */
   getHabits (): Observable<Habit[]> {
-    this.habitsRef = this.db.list('habits');
-    return this.habitsRef.snapshotChanges();
+    return this.firestore.collection('habits').snapshotChanges();
     //return this.http.get<Habit[]>(this.habitsUrl)
   }
 
@@ -67,13 +64,9 @@ export class HabitService {
   */
 
   // Adds to server and returns Habit with ID
-  addHabit(habit: Habit): Observable<Habit> {
-    this.habitsRef.push({
-      name: habit.name,
-      description: habit.description,
-      created_date: habit.created_date
-    })
-    
+  //addHabit(habit: Habit): Observable<Habit> {
+  addHabit(habit: Habit) {
+    return this.firestore.collection('habits').add(habit);
     /*return this.http.post<Habit>(
       this.habitsUrl, habit, this.httpOptions
     ); */
