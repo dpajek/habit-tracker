@@ -109,11 +109,12 @@ export class HabitsComponent implements OnInit {
     description = description.trim();
     let new_date : Date = new Date;
     if (!name) { return; }
-    this.habitService.addHabit({ name, description, created_date: new_date } as Habit)
-      .subscribe(habit => {
-        this.habits.push(habit);
-        this.fillRecentDates(habit.id);
-      });
+    this.habitService.addHabit({ name, description, created_date: new_date } as Habit);
+
+      //.subscribe(habit => {
+        //this.habits.push(habit);
+        //this.fillRecentDates(habit.id);
+      //});
   }
 
   // true if passed habit is complete today (ie, habit record exists)
