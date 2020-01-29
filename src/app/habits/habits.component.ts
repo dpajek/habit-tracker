@@ -23,7 +23,7 @@ export class HabitsComponent implements OnInit {
   num_recent_days: number = 5; // number of previous days to show
 
   recent_dates: Recent_Date[];
-  completed_ids: number[];
+  completed_ids: string[];
 
   constructor(private habitService: HabitService) { }
 
@@ -65,7 +65,6 @@ export class HabitsComponent implements OnInit {
             ...doc.data()
           } as Habit);
         })
-      });
 
         var weekday = [];
         weekday[0] = "S";
