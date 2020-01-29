@@ -52,10 +52,20 @@ export class HabitsComponent implements OnInit {
       });
   }
 
-  fillRecentDates(habit_id: number): void {
+  fillRecentDates(habit_id: string): void {
+
+    let habit_records : Habit_Record[] = [];
 
     this.habitService.getHabitRecordsHabitId(habit_id)
-      .subscribe(habit_records => {
+      .then(snapshot => {
+
+        snapshot.ForEach(doc => {
+          habit_records.push({
+            id: doc.id,
+            ...doc.data()
+          } as Habit);
+        })
+      });
 
         var weekday = [];
         weekday[0] = "S";

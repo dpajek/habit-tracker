@@ -6,13 +6,13 @@ export class Habit {
 }
 
 export class Habit_Record {
-      id: number;
-habit_id: number;
+      id: string;
+habit_id: string;
     date: Date;
 }
 
 export class Recent_Date {
-    habit_id: number; 
+    habit_id: string; 
     completed: boolean;
     date: Date;
     day_letter: string; // used as an indicator of day of week

@@ -36,20 +36,32 @@ export class HabitService {
 
 //
   /** GET habits from the server */
-  getHabits (): Observable<Habit[]> {
+  getHabits (): Observable<any[]> {
     return this.firestore.collection('habits').snapshotChanges();
     //return this.http.get<Habit[]>(this.habitsUrl)
   }
 
+/*
   getHabitRecords (): Observable<Habit_Record[]> {
     return this.http.get<Habit_Record[]>(this.habitRecordUrl)
   }
+  */
 
+  getHabitRecords (): Observable<any[]> {
+    return this.firestore.collection('habit_records').snapshotChanges();
+  }
+
+/*
   getHabitRecordsHabitId (habit_id: number): Observable<Habit_Record[]> {
     let params = new HttpParams().set('habit_id', habit_id.toString());
     return this.http.get<Habit_Record[]>(this.habitRecordUrl,{ params: params })
   }
   // chooses the variable based on the second part of the URL "habits"
+*/
+getHabitRecordsHabitId (habit_id: string): Observable<any[]> {
+    return this.firestore.collection('habit_records').where("habit_id", "==", habit_id).get();
+  }
+
 
   /*
   getHabitId(id: number): Observable<Habit> {
@@ -72,18 +84,32 @@ export class HabitService {
     ); */
   }
 
+  /*
   updateHabit(habit: Habit): Observable<Habit> {
     return this.http.put<Habit>(
       this.habitsUrl, habit, this.httpOptions
     );
   }
+  */
+  
+  updateHabit(habit: Habit) {
+    delete habit.id;
+    this.firestore.doc('habits/' + habit.id).update(habit);
+  }
 
+/*
   addHabitRecord(habit_record: Habit_Record): Observable<Habit_Record> {
     return this.http.post<Habit_Record>(
       this.habitRecordUrl, habit_record, this.httpOptions
     );
   }
+*/
 
+  addHabitRecord(habit_record: Habit_Record) {
+    return this.firestore.collection('habit_records').add(habit_record);
+  }
+
+/*
   deleteHabit_byID(id: number): Observable<{}> {
     const url = `${this.habitsUrl}/${id}`;
     return this.http.delete<Habit>(
@@ -96,6 +122,15 @@ export class HabitService {
     return this.http.delete<Habit_Record>(
       url, this.httpOptions
     );
+  }
+*/
+
+  deleteHabit_byID(id: string) {
+    this.firestore.doc('habits/' + id).delete();
+  }
+
+  deleteHabitRecord_byID(id: string) {
+    this.firestore.doc('habit_records/' + id).delete();
   }
 
   getHabitId(id: number): Observable<Habit> {
