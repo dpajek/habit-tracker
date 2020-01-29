@@ -26,6 +26,7 @@ import { HabitDetailEditComponent } from './habit-detail-edit/habit-detail-edit.
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from '../environments/environment';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { environment } from '../environments/environment';
               XunkCalendarModule,
               MDBBootstrapModule.forRoot(),
               AngularFireModule.initializeApp(environment.firebaseConfig),
-              AngularFireDatabaseModule
+              AngularFireDatabaseModule,
+              AngularFirestoreModule
             ],
   declarations: [ AppComponent, HelloComponent, HabitsComponent, HabitDetailComponent, HabitCalendarComponent, HabitDetailEditComponent],
   bootstrap:    [ AppComponent ],
