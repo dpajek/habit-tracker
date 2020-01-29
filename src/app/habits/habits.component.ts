@@ -54,16 +54,15 @@ export class HabitsComponent implements OnInit {
 
   fillRecentDates(habit_id: string): void {
 
-    let habit_records : Habit_Record[] = [];
+    let habit_records : Habit_Record[];
 
-    this.habitService.getHabitRecordsHabitId(habit_id)
-      .then(snapshot => {
-
-        snapshot.ForEach(doc => {
-          habit_records.push({
-            id: doc.id,
-            ...doc.data()
-          } as Habit);
+    this.habitService.getHabitRecords()
+      .subscribe( data => {
+        habit_records = data.map(e => {
+          return {
+            id: e.payload.doc.id,
+            ...e.payload.doc.data()
+          } as Habit_Record;
         })
 
         var weekday = [];
@@ -79,6 +78,7 @@ export class HabitsComponent implements OnInit {
         current_date.setHours(0,0,0,0);
 
         if(habit_records.filter((item: any) => {
+          if(item.habit_id != habit_id) return false;
           let prev_date = new Date(item.date);
           prev_date.setHours(0,0,0,0);
           return prev_date.getTime() === current_date.getTime();
@@ -148,8 +148,10 @@ export class HabitsComponent implements OnInit {
 
     let new_habit_record : Habit_Record = {habit_id: habit.id, date: new_date};
 
-    this.habitService.addHabitRecord(new_habit_record)
+    this.habitService.addHabitRecord(new_habit_record);
+    /*
       .subscribe(habit_record => 
         this.completed_ids.push(habit_record.habit_id));
+    */
   }
 }

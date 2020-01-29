@@ -58,9 +58,13 @@ export class HabitService {
   }
   // chooses the variable based on the second part of the URL "habits"
 */
+
+//// HOW do you do this???
+/*
 getHabitRecordsHabitId (habit_id: string): Observable<any[]> {
     return this.firestore.collection('habit_records').where("habit_id", "==", habit_id).get();
   }
+*/
 
 
   /*
