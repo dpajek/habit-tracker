@@ -26,7 +26,6 @@ import { HabitDetailEditComponent } from './habit-detail-edit/habit-detail-edit.
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from '../environments/environment';
-import { OldHabitService } from './old-habit.service';
 
 
 @NgModule({
@@ -46,6 +45,6 @@ import { OldHabitService } from './old-habit.service';
             ],
   declarations: [ AppComponent, HelloComponent, HabitsComponent, HabitDetailComponent, HabitCalendarComponent, HabitDetailEditComponent],
   bootstrap:    [ AppComponent ],
-  providers: [HabitService, InMemoryDataService, OldHabitService]
+  providers: [HabitService, InMemoryDataService]
 })
 export class AppModule { }
