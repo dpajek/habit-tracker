@@ -40,9 +40,8 @@ export class HabitDetailComponent implements OnInit {
   ngOnInit() {
     this.getHabit();
 
-    this.recent_dates = []; // fill in info for last x days for all habits
     this.completed = false; // store habit ids for all completed habits
-
+   
     //this.habitService.getHabitRecords()
     //this.habit_id
     this.habitService.getHabitRecords()
@@ -52,7 +51,9 @@ export class HabitDetailComponent implements OnInit {
               id: e.payload.doc.id,
               ...e.payload.doc.data()
             } as Habit_Record;
-          })
+          }).filter(item => {
+            return item.habit_id === this.habit.id;
+          });
 
           this.fillRecentDates(this.habit_id);
           
@@ -60,7 +61,6 @@ export class HabitDetailComponent implements OnInit {
 
           // get date habit was created
           let created_date = new Date(this.habit.created_date.toDate());
-          console.log(created_date);
 
           // highlight created date on calendar
           this.heatmap[Number("" 
@@ -133,12 +133,14 @@ fillRecentDates(habit_id: string): void {
         current_date.setHours(0,0,0,0);
 
         if(this.habit_records.filter((item: any) => {
-          let prev_date = new Date(item.date);
+          let prev_date = new Date(item.date.toDate());
           prev_date.setHours(0,0,0,0);
           return prev_date.getTime() === current_date.getTime();
         }).length > 0){
           this.completed = true;
         } // store ids for habits that have been completed
+
+        this.recent_dates = []; // fill in info for last x days for all habits
 
         for(var i = 0; i < this.num_recent_days; i++) {
 
@@ -149,7 +151,7 @@ fillRecentDates(habit_id: string): void {
           recent_date.setHours(0,0,0,0);
 
           if(this.habit_records.filter((item: any) => {
-            let prev_date = new Date(item.date);
+            let prev_date = new Date(item.date.toDate());
             prev_date.setHours(0,0,0,0);
             return prev_date.getTime() === recent_date.getTime();
           }).length > 0){
@@ -174,7 +176,7 @@ fillRecentDates(habit_id: string): void {
 
     //check for duplicate date
     if(this.habit_records.filter((item: any) => {
-        let prev_date = new Date(item.date);
+        let prev_date = new Date(item.date.toDate());
         prev_date.setHours(0,0,0,0);
         return prev_date.getTime() === new_date.getTime();
       }).length > 0){
@@ -184,7 +186,7 @@ fillRecentDates(habit_id: string): void {
 
     let new_habit_record : Habit_Record = {habit_id: this.habit_id, date: new_date};
 
-    this.recent_dates = []; // fill in info for last x days for all habits
+    //this.recent_dates = []; // fill in info for last x days for all habits
     this.completed = true;
 
     this.habitService.addHabitRecord(new_habit_record)
@@ -206,12 +208,10 @@ fillRecentDates(habit_id: string): void {
 
   deleteHabit(): void {
     for (let habit_record of this.habit_records) {
-      this.habitService.deleteHabitRecord_byID(habit_record.id)
-      .subscribe();
+      this.habitService.deleteHabitRecord_byID(habit_record.id);
     }
 
-    this.habitService.deleteHabit_byID(this.habit_id)
-      .subscribe();
+    this.habitService.deleteHabit_byID(this.habit_id);
     
     this.router.navigate(['/habits']);
   }
@@ -223,13 +223,12 @@ fillRecentDates(habit_id: string): void {
     new_date.setHours(0,0,0,0); // Strip timestamp from date
 
     let habit_record = this.habit_records.filter((item: any) => {
-        let prev_date = new Date(item.date);
+        let prev_date = new Date(item.date.toDate());
         prev_date.setHours(0,0,0,0);
         return prev_date.getTime() === new_date.getTime();
       })[0];
 
-    this.habitService.deleteHabitRecord_byID(habit_record.id)
-      .subscribe();
+    this.habitService.deleteHabitRecord_byID(habit_record.id);
     
     this.habit_records.pop();
     this.completed = false;
