@@ -59,7 +59,8 @@ export class HabitDetailComponent implements OnInit {
           //this.fillRecentDates();
 
           // get date habit was created
-          let created_date = new Date(this.habit.created_date);
+          let created_date = new Date(this.habit.created_date.toDate());
+          console.log(created_date);
 
           // highlight created date on calendar
           this.heatmap[Number("" 
@@ -69,7 +70,7 @@ export class HabitDetailComponent implements OnInit {
 
           // loop through records, highlight completed dates
           for (let entry of this.habit_records) {
-            let entry_date = new Date(entry.date);
+            let entry_date = new Date(entry.date.toDate());
 
             this.heatmap[Number("" 
               + entry_date.getFullYear() 
