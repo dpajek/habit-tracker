@@ -97,7 +97,7 @@ getHabitRecordsHabitId (habit_id: string): Observable<any[]> {
   */
   
   updateHabit(habit: Habit) {
-    delete habit.id;
+    //delete habit.id; //not sure why this is in sample code?
     this.firestore.doc('habits/' + habit.id).update(habit);
   }
 

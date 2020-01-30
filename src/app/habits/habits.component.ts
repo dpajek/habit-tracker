@@ -63,7 +63,9 @@ export class HabitsComponent implements OnInit {
             id: e.payload.doc.id,
             ...e.payload.doc.data()
           } as Habit_Record;
-        })
+        }).filter( item => {
+          return item.habit_id === habit_id;
+        });
 
         var weekday = [];
         weekday[0] = "S";
@@ -79,7 +81,7 @@ export class HabitsComponent implements OnInit {
 
         if(habit_records.filter((item: any) => {
           if(item.habit_id != habit_id) return false;
-          let prev_date = new Date(item.date);
+          let prev_date = new Date(item.date.toDate());
           prev_date.setHours(0,0,0,0);
           return prev_date.getTime() === current_date.getTime();
         }).length > 0){
@@ -95,7 +97,7 @@ export class HabitsComponent implements OnInit {
           recent_date.setHours(0,0,0,0);
 
           if(habit_records.filter((item: any) => {
-            let prev_date = new Date(item.date);
+            let prev_date = new Date(item.date.toDate());
             prev_date.setHours(0,0,0,0);
             return prev_date.getTime() === recent_date.getTime();
           }).length > 0){

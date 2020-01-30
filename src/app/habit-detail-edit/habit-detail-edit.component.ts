@@ -15,7 +15,7 @@ import { NgModule } from '@angular/core'
 })
 export class HabitDetailEditComponent implements OnInit {
 
-  habit_id: number;
+  habit_id: string;
   habit: Habit;
 
   constructor(
@@ -31,21 +31,38 @@ export class HabitDetailEditComponent implements OnInit {
   getHabit(): void {
   //+ converts a string to a number
   //const id = +this.route.snapshot.paramMap.get('id');
-  this.habit_id = +this.route.snapshot.paramMap.get('id');
+  this.habit_id = this.route.snapshot.paramMap.get('id');
 
   //subscribe to observable so it's async (place output into this.habit)
+  /*
   this.habitService.getHabitId(this.habit_id)
     .subscribe(habit => this.habit = habit);
+  */
+
+  let habits : Habit[];
+
+    this.habitService.getHabits()
+      .subscribe( data => {
+        habits = data.map(e => {
+          return {
+            id: e.payload.doc.id,
+            ...e.payload.doc.data()
+          } as Habit;
+        })              
+        this.habit = habits.find(item => {
+          return item.id === this.habit_id;
+        });
+      });
       
   }
 
   updateHabit(name: String, description: String): void {
     this.habit.name = name.trim();
     this.habit.description = description.trim();
-    this.habitService.updateHabit(this.habit)
-      .subscribe(habit => {
-        this.router.navigate(['/detail/',this.habit_id]);
-      });
+    this.habitService.updateHabit(this.habit);
+      //.subscribe(habit => {
+    this.router.navigate(['/detail/',this.habit_id]);
+      //});
   }
 
 }
