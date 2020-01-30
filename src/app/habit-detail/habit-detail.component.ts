@@ -108,8 +108,10 @@ export class HabitDetailComponent implements OnInit {
             id: e.payload.doc.id,
             ...e.payload.doc.data()
           } as Habit;
-        })
-      this.habit = habits.filter(item => item.id == this.habit_id)
+        })              
+        this.habit = habits.find(item => {
+          return item.id === this.habit_id;
+        });
       });
       
   }

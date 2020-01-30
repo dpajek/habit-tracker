@@ -56,7 +56,7 @@
           {{habit.description}} 
           </p>
           <div class="created_date">
-          Created: {{habit.created_date | date:'MMM dd, yyyy'}}
+          Created: {{habit.created_date.toDate() | date:'MMM dd, yyyy'}}
           </div >
         </div>
 
