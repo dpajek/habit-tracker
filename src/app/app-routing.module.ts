@@ -5,10 +5,12 @@ import { HabitsComponent } from './habits/habits.component';
 import { HabitDetailComponent } from './habit-detail/habit-detail.component';
 import { HabitDetailEditComponent } from './habit-detail-edit/habit-detail-edit.component';
 
+import { AuthGuard } from './auth.guard';
+
 const routes: Routes = [
   { path: 'habits', component: HabitsComponent },
-  { path: 'detail/:id', component: HabitDetailComponent },
-  { path: 'edit/:id', component: HabitDetailEditComponent },
+  { path: 'detail/:id', component: HabitDetailComponent, canActivate: [AuthGuard] },
+  { path: 'edit/:id', component: HabitDetailEditComponent, canActivate: [AuthGuard] },
   { path: '', redirectTo: '/habits', pathMatch: 'full' },
 ];
 
