@@ -46,7 +46,7 @@ export class AuthService {
    }
 
    private updateUserDate(user) {
-     // Sets user datea to firestore on login
+     // Sets user data to firestore on login
      const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${user.uid}`);
 
      const data = {

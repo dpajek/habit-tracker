@@ -28,6 +28,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AuthService } from './auth.service';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 
 @NgModule({
@@ -48,6 +49,6 @@ import { AuthService } from './auth.service';
             ],
   declarations: [ AppComponent, HelloComponent, HabitsComponent, HabitDetailComponent, HabitCalendarComponent, HabitDetailEditComponent],
   bootstrap:    [ AppComponent ],
-  providers: [HabitService, InMemoryDataService, AuthService]
+  providers: [HabitService, InMemoryDataService, AuthService,               AngularFireAuth]
 })
 export class AppModule { }
