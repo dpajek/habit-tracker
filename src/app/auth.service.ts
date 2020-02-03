@@ -34,10 +34,10 @@ export class AuthService {
     );
    }
 
-   aysnc googleSignin()  {
+   async googleSignin()  {
      const provider = new auth.GoogleAuthProvider();
      const credential = await this.afAuth.auth.signInWithPopup(provider);
-     return this.updateUserData(credential.user);
+     return this.updateUserDate(credential.user);
    }
    
    async signOut() {
@@ -45,7 +45,7 @@ export class AuthService {
      return this.router.navigate(['/']);
    }
 
-   updateUserDate(user) {
+   private updateUserDate(user) {
      // Sets user datea to firestore on login
      const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${user.uid}`);
 
