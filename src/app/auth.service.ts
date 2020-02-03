@@ -32,4 +32,10 @@ export class AuthService {
     );
    }
 
+   aysnc googleSignin() {
+     const provider = new auth.GoogleAuthProvider();
+     const credential = await this.afAuth.auth.signInWithPopup(provider);
+     return this.updateUserData(credential.user);
+   }
+
 }
