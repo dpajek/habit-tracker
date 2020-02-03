@@ -3,7 +3,9 @@
   <hr>
   {{ auth.user$ | async }}
   <div *ngIf="auth.user$ | async as user; else login">
-    {{ user | json}}
+    <pre>
+      {{ user | json}}
+    </pre>
     <button class="button" (click)="auth.signOut()">Sign Out</button>
   </div>
 
