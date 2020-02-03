@@ -37,5 +37,24 @@ export class AuthService {
      const credential = await this.afAuth.auth.signInWithPopup(provider);
      return this.updateUserData(credential.user);
    }
+   
+   async signOut() {
+     await this.afAuth.auth.signOut();
+     return this.router.navigate(['/']);
+   }
 
+   private updateUserDate(user) {
+     // Sets user datea to firestore on login
+     const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${user.uid}`);
+
+     const data = {
+       uid: user.uid,
+       email: user.email,
+       displayName: user.displayName,
+       photoURL: user.URL
+     };
+
+     return userRef.set(data, {merge: true });
+     
+   }
 }
