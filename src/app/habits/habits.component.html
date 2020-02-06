@@ -3,10 +3,12 @@
 
 <ul class="list-group">
   <li class="list-group-item flex-column align-items-start" *ngFor='let habit of habits' >
-    <div class="row">
+    <div class="row align-items-center">
+      <span class="accordian">
+        <a (click)="test.toggle()" onclick="if(this.innerHTML == '+'){this.innerHTML = '-'}else{this.innerHTML = '+'}" class="habit_title">+</a>
+      </span>
       <div class="col ">
         <h5 class="mb-1">
-          <a (click)="test.toggle()" onclick="if(this.innerHTML == '+'){this.innerHTML = '-'}else{this.innerHTML = '+'}" class="habit_title">+</a>
           <a routerLink="/detail/{{habit.id}}" class="habit_title">
             {{habit.name}} 
           </a>
@@ -33,10 +35,9 @@
 
       </div>
     </div>
-
-    <p class="mb-1" class="habit_text" mdbCollapse #test="bs-collapse">
+    <div class="mb-1" class="habit_text" mdbCollapse #test="bs-collapse">
       {{habit.description}} 
-    </p>
+    </div>
   </li>
 </ul>
 

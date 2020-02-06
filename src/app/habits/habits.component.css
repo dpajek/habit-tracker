@@ -5,6 +5,12 @@ Dark 007000
 Light 75d258
 */
 
+span.accordian {
+  width: 7px;
+  color:  #007000;
+  font-size: 1.2em;
+}
+
 h3 { 
         } 
 
