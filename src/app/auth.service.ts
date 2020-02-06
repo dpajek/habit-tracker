@@ -19,7 +19,7 @@ export class AuthService {
     private afs: AngularFirestore,
     private router: Router,
   ) {  
-      this.user$ = this.afAuth.authState.pipe(
+           this.user$ = this.afAuth.authState.pipe(
         switchMap(user => {
           if (user) {
             console.log('yes user')
@@ -33,7 +33,7 @@ export class AuthService {
     }
 
    ngOnInit() {
-   
+
    }
 
   googleSignin()  {

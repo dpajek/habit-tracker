@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { tap, map, take } from 'rxjs/operators';
 
 import { AuthService } from './auth.service';
@@ -14,16 +14,20 @@ constructor(private auth: AuthService, private router: Router) {}
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> {
-      let flag: boolean = false;
-      console.log('canActivate1')
-      /*
-      this.auth.user$
-        .subscribe(user => {
-          console.log('2')
-          if(user) flag = true;
-        })
-*/
+      let flag: Observable<boolean> = of(false);
+      console.log('canActivate1');
+      
+      return this.auth.user$
+        .pipe(map(user => {
+          console.log('2');
+          console.log(user);
+          return !!user;
+        }));
+
+        
+
       //console.log(this.auth.user$)
+      /*
     return this.auth.user$.pipe(
       //take(1),
       map(user => {
@@ -37,5 +41,6 @@ constructor(private auth: AuthService, private router: Router) {}
         }
       })
     );
+    */
   }
 }
