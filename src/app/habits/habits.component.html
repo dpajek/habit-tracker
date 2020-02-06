@@ -6,7 +6,7 @@
     <div class="row">
       <div class="col ">
         <h5 class="mb-1">
-          <a (click)="test.toggle()" class="habit_title">
+          <a (click)="test.toggle()" >
               +
           </a>
           <a routerLink="/detail/{{habit.id}}" class="habit_title">
@@ -35,11 +35,8 @@
 
       </div>
     </div>
-    <div class="" mdbCollapse #test="bs-collapse">
-      <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim
-        keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.</p>
-    </div>
-    <p class="mb-1" class="habit_text">
+
+    <p class="mb-1" class="habit_text" mdbCollapse #test="bs-collapse">
       {{habit.description}} 
     </p>
   </li>
