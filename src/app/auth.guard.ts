@@ -16,9 +16,14 @@ constructor(private auth: AuthService, private router: Router) {}
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> {
+      console.log('canActivate1')
+      //console.log(this.auth.user$)
     return this.auth.user$.pipe(
-      take(1),
-      map(user => !!user), // map to boolean
+      //take(1),
+      map(user => {
+        console.log('canActivate-map')
+        return !!user;
+      }), // map to boolean
       tap(loggedIn => {
         if (!loggedIn) {
           console.log('access denied');
