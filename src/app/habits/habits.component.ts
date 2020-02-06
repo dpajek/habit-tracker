@@ -20,7 +20,7 @@ export class HabitsComponent implements OnInit {
 
   habits: Habit[]; // declares as an array of type Habit
   //recent_habit_records: Habit_Record[]; // declares as an array of type Habit_Record
-  num_recent_days: number = 5; // number of previous days to show
+  num_recent_days: number = 4; // number of previous days to show
 
   recent_dates: Recent_Date[];
   completed_ids: string[];
