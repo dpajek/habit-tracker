@@ -52,6 +52,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
             ],
   declarations: [ AppComponent, HelloComponent, HabitsComponent, HabitDetailComponent, HabitCalendarComponent, HabitDetailEditComponent],
   bootstrap:    [ AppComponent ],
-  providers: [HabitService, InMemoryDataService, AuthService,               AngularFireAuth]
+  providers: [HabitService, InMemoryDataService, AngularFireAuth]
 })
 export class AppModule { }
