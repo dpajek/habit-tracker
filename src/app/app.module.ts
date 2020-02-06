@@ -30,6 +30,8 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AuthService } from './auth.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   imports:  [ BrowserModule, FormsModule, AppRoutingModule, 
@@ -45,7 +47,8 @@ import { AngularFireAuth } from '@angular/fire/auth';
               MDBBootstrapModule.forRoot(),
               AngularFireModule.initializeApp(environment.firebaseConfig),
               AngularFireDatabaseModule,
-              AngularFirestoreModule
+              AngularFirestoreModule,
+              BrowserAnimationsModule
             ],
   declarations: [ AppComponent, HelloComponent, HabitsComponent, HabitDetailComponent, HabitCalendarComponent, HabitDetailEditComponent],
   bootstrap:    [ AppComponent ],
