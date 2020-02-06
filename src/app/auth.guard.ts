@@ -14,7 +14,15 @@ constructor(private auth: AuthService, private router: Router) {}
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> {
+      let flag: boolean = false;
       console.log('canActivate1')
+      /*
+      this.auth.user$
+        .subscribe(user => {
+          console.log('2')
+          if(user) flag = true;
+        })
+*/
       //console.log(this.auth.user$)
     return this.auth.user$.pipe(
       //take(1),
