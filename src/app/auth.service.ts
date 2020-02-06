@@ -9,9 +9,7 @@ import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators'; 
 import { User } from './user'
 
-@Injectable( {
-  providedIn: 'root'
-})
+@Injectable()
 export class AuthService {
   user$: Observable<User>;
 

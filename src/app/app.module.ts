@@ -27,7 +27,9 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+
 import { AuthService } from './auth.service';
+import { AuthGuard } from './auth.guard';
 import { AngularFireAuth } from '@angular/fire/auth';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -52,6 +54,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
             ],
   declarations: [ AppComponent, HelloComponent, HabitsComponent, HabitDetailComponent, HabitCalendarComponent, HabitDetailEditComponent],
   bootstrap:    [ AppComponent ],
-  providers: [HabitService, InMemoryDataService, AngularFireAuth]
+  providers: [HabitService, InMemoryDataService, AngularFireAuth, AuthService, AuthGuard]
 })
 export class AppModule { }
