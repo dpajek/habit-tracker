@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { auth } from 'firebase/app';
@@ -9,16 +9,31 @@ import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators'; 
 import { User } from './user'
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class AuthService {
   user$: Observable<User>;
-
+  userData: any;
 
   constructor(
-    private afAuth: AngularFireAuth,
-    private afs: AngularFirestore,
-    private router: Router,
+    public afAuth: AngularFireAuth,
+    public afs: AngularFirestore,
+    public router: Router,
+    public ngZone: NgZone
   ) {  
+    this.afAuth.authState.subscribe(user => {
+      if(user) {
+        this.userData = user;
+        localStorage.setItem('user', JSON.stringify(this.userData));
+        JSON.parse(localStorage.getItem('user'));
+      } else {
+        localStorage.setItem('user', null);
+        JSON.parse(localStorage.getItem('user'));
+      }
+    });
+
+    /*
            this.user$ = this.afAuth.authState.pipe(
         switchMap(user => {
           if (user) {
@@ -30,6 +45,7 @@ export class AuthService {
           }
         })
       );
+      */
     }
 
    ngOnInit() {
