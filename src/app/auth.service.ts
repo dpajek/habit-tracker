@@ -52,6 +52,11 @@ export class AuthService {
 
    }
 
+   get isLoggedIn(): boolean {
+     const user = JSON.parse(localStorage.getItem('user'));
+     return (user !== null) ? true : false;
+   }
+
   googleSignin()  {
      const provider = new auth.GoogleAuthProvider();
      return this.oAuthLogin(provider);
@@ -65,14 +70,18 @@ export class AuthService {
    private oAuthLogin(provider) {
      return this.afAuth.auth.signInWithPopup(provider)
       .then((credential) => {
-        this.updateUserData(credential.user);
+        this.ngZone.run(() => {
+
+        })
+        //this.updateUserData(credential.user);
       })
    }
    
   signOut() {
-     this.afAuth.auth.signOut().then(() => {
+     return this.afAuth.auth.signOut().then(() => {
+      localStorage.removeItem('user');
       this.router.navigate(['/']);
-     }) 
+     });
    }
 
    private updateUserData(user) {
