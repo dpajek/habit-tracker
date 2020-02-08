@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { HelloComponent } from './hello.component';
 import { HabitsComponent } from './habits/habits.component';
+import { LoginComponent } from './login/login.component';
+
 
 import { AppRoutingModule }     from './app-routing.module';
 import { HabitDetailComponent } from './habit-detail/habit-detail.component';
@@ -52,7 +54,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
               AngularFirestoreModule,
               BrowserAnimationsModule
             ],
-  declarations: [ AppComponent, HelloComponent, HabitsComponent, HabitDetailComponent, HabitCalendarComponent, HabitDetailEditComponent],
+  declarations: [ AppComponent, HelloComponent, HabitsComponent, HabitDetailComponent, HabitCalendarComponent, HabitDetailEditComponent, LoginComponent],
   bootstrap:    [ AppComponent ],
   providers: [HabitService, InMemoryDataService, AngularFireAuth, AuthService, AuthGuard]
 })
