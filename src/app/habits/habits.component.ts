@@ -4,6 +4,8 @@ import { Habit, Habit_Record, Recent_Date } from '../habit';
 
 import { HabitService } from '../habit.service';
 
+import {AuthService } from '../auth.service';
+
 import { filter } from 'rxjs/operators';
 
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
@@ -25,7 +27,9 @@ export class HabitsComponent implements OnInit {
   recent_dates: Recent_Date[];
   completed_ids: string[];
 
-  constructor(private habitService: HabitService) { }
+  constructor(
+    private habitService: HabitService,
+    public auth: AuthService) { }
 
 
   ngOnInit() {
@@ -37,7 +41,10 @@ export class HabitsComponent implements OnInit {
             id: e.payload.doc.id,
             ...e.payload.doc.data()
           } as Habit;
-        })  
+        }).filter(item => {
+            console.log('GetHabits: ' + auth.user.uid)
+            return item.uid === auth.user.uid;
+          });  
         
         //habits => {
         //this.habits = habits;

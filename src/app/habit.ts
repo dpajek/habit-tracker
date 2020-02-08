@@ -3,6 +3,7 @@ export class Habit {
   name: string;
   description: string;
   created_date: Date;
+  uid?: string;
 }
 
 export class Habit_Record {
