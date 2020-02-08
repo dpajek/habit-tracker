@@ -128,7 +128,9 @@ export class HabitsComponent implements OnInit {
     description = description.trim();
     let new_date : Date = new Date;
     if (!name) { return; }
-    this.habitService.addHabit({ name, description, created_date: new_date } as Habit);
+    let uid: string = this.auth.getUserId();
+    console.log('addHabit - uid: ' + uid)
+    this.habitService.addHabit({ name, description, created_date: new_date, uid:  uid} as Habit);
 
       //.subscribe(habit => {
         //this.habits.push(habit);
