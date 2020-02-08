@@ -1,17 +1,12 @@
 <div class="container">
   <hello name="{{ name }}"></hello>
   <hr>
-  {{ auth.user$ | async }}
-  <div *ngIf="auth.userData as user; else login">
+  <div *ngIf="auth.userData as user">
     <pre>
       {{ user | json}}
     </pre>
     <button class="button" (click)="auth.signOut()">Sign Out</button>
   </div>
-
-  <ng-template #login>
-    <button class="button" (click)="auth.googleSignin()">Login with Google</button>
-  </ng-template>
 
   <nav>
   </nav>

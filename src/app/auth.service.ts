@@ -85,7 +85,7 @@ export class AuthService {
      return this.afAuth.auth.signInWithPopup(provider)
       .then((credential) => {
         this.ngZone.run(() => {
-
+        this.router.navigate(['/habits']);
         })
         //this.updateUserData(credential.user);
       })

@@ -10,10 +10,10 @@ import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'habits', component: HabitsComponent },
+  { path: 'habits', component: HabitsComponent, canActivate: [AuthGuard] },
   { path: 'detail/:id', component: HabitDetailComponent, canActivate: [AuthGuard] },
   { path: 'edit/:id', component: HabitDetailEditComponent, canActivate: [AuthGuard] },
-  { path: '', redirectTo: '/habits', pathMatch: 'full' }
+  { path: '', redirectTo: '/login', pathMatch: 'full' }
 ];
 
 @NgModule({
