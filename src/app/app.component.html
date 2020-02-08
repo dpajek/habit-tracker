@@ -1,14 +1,12 @@
 <div class="container">
   <hello name="{{ name }}"></hello>
   <hr>
-  <div *ngIf="auth.userData as user">
-    <pre>
-      {{ user | json}}
-    </pre>
-    <button class="button" (click)="auth.signOut()">Sign Out</button>
-  </div>
 
   <nav>
   </nav>
   <router-outlet></router-outlet>
+  <div *ngIf="auth.userData">
+    <button class="button" (click)="auth.signOut()">Sign Out</button>
+  </div>
+  <br><br>
 </div>
