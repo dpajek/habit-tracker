@@ -13,7 +13,7 @@ import { User } from './user'
   providedIn: 'root'
 })
 export class AuthService {
-  user$: Observable<User>;
+  //user$: Observable<User>;
   userData: User;
 
   constructor(
@@ -24,13 +24,19 @@ export class AuthService {
   ) {  
     this.afAuth.authState.subscribe(user => {
       if(user) {
-        this.userData = user;
-        console.log('userData.uid:' + this.userData.uid)
+        //this.userData = user;
+        this.userData = { 
+          uid: user.uid,
+          email: user.email,
+          photoURL: user.photoURL, 
+          displayName: user.displayName };
+        console.log('userData.uid:' + this.userData.uid);
         localStorage.setItem('user', JSON.stringify(this.userData));
-        JSON.parse(localStorage.getItem('user'));
+        //JSON.parse(localStorage.getItem('user'));
       } else {
         localStorage.setItem('user', null);
-        JSON.parse(localStorage.getItem('user'));
+        console.log('No User');
+        //JSON.parse(localStorage.getItem('user'));
       }
     });
 
