@@ -2,7 +2,7 @@
   <hello name="{{ name }}"></hello>
   <hr>
   {{ auth.user$ | async }}
-  <div *ngIf="auth.user$ | async as user; else login">
+  <div *ngIf="auth.userData as user; else login">
     <pre>
       {{ user | json}}
     </pre>
