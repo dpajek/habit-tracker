@@ -32,6 +32,7 @@ export class AuthService {
           displayName: user.displayName };
         console.log('userData.uid:' + this.userData.uid);
         localStorage.setItem('user', JSON.stringify(this.userData));
+        this.router.navigate(['/habits']);
         //JSON.parse(localStorage.getItem('user'));
       } else {
         localStorage.setItem('user', null);
@@ -60,7 +61,7 @@ export class AuthService {
 
    get isLoggedIn(): boolean {
      const user = JSON.parse(localStorage.getItem('user'));
-     console.log(user.displayName + ' is logged in.');
+     if(user !== null) console.log(user.displayName + ' is logged in.');
      return (user !== null) ? true : false;
    }
 
@@ -85,8 +86,8 @@ export class AuthService {
      return this.afAuth.auth.signInWithPopup(provider)
       .then((credential) => {
         this.ngZone.run(() => {
-        this.router.navigate(['/habits']);
         })
+        //this.router.navigate(['/habits']);
         //this.updateUserData(credential.user);
       })
    }
