@@ -14,7 +14,7 @@ import { User } from './user'
 })
 export class AuthService {
   user$: Observable<User>;
-  userData: any;
+  userData: User;
 
   constructor(
     public afAuth: AngularFireAuth,
@@ -25,6 +25,7 @@ export class AuthService {
     this.afAuth.authState.subscribe(user => {
       if(user) {
         this.userData = user;
+        console.log('userData.uid:' + this.userData.uid)
         localStorage.setItem('user', JSON.stringify(this.userData));
         JSON.parse(localStorage.getItem('user'));
       } else {
