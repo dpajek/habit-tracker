@@ -66,9 +66,9 @@ export class AuthService {
    }
 
   getUserId(): string {
-    console.log('getUserId');
+    //console.log('getUserId');
     const user = JSON.parse(localStorage.getItem('user'));
-    console.log('uid: ' + user.uid);
+    //console.log('uid: ' + user.uid);
     return (user !== null) ? user.uid : '';
   }
 

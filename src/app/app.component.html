@@ -1,5 +1,15 @@
 <div class="container">
-  <hello name="{{ name }}"></hello>
+  <div class="row align-items-center">
+    <div class="col ">
+      <h1>Habit Tracker</h1>
+    </div>
+    
+    <div *ngIf="auth.userData" class="col-auto">
+      <img src="{{auth.userData.photoURL}}" class="rounded-circle  img-fluid z-depth-1" alt="{{auth.userData.displayName}}" style="width: 50px; border: 1">
+    </div>
+
+  </div>
+
   <hr>
 
   <nav>

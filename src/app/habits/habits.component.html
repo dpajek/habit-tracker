@@ -1,5 +1,7 @@
 <br>
-<h2>{{auth.userData.displayName}}'s Habits</h2>
+<div *ngIf="auth.userData">
+  <h2>{{auth.userData.displayName}}'s Habits</h2>
+</div>
 
 <ul class="list-group">
   <li class="list-group-item flex-column align-items-start" *ngFor='let habit of habits' >

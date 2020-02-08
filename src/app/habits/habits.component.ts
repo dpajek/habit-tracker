@@ -42,8 +42,10 @@ export class HabitsComponent implements OnInit {
             ...e.payload.doc.data()
           } as Habit;
         }).filter(item => {
-            console.log('Logged In UID: ' + this.auth.getUserId())
-            console.log('Current Item UID: ' + item.uid)
+            console.log('Logged In UID: ' 
+              + this.auth.getUserId() 
+              + ' Current Item UID: ' 
+              + item.uid);
             return item.uid === this.auth.getUserId();
           });  
         
