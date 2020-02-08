@@ -39,7 +39,6 @@ export class AuthService {
         //JSON.parse(localStorage.getItem('user'));
       }
     });
-
     /*
            this.user$ = this.afAuth.authState.pipe(
         switchMap(user => {
@@ -61,6 +60,7 @@ export class AuthService {
 
    get isLoggedIn(): boolean {
      const user = JSON.parse(localStorage.getItem('user'));
+     console.log(user.displayName + ' is logged in.');
      return (user !== null) ? true : false;
    }
 
@@ -86,12 +86,14 @@ export class AuthService {
    
   signOut() {
      return this.afAuth.auth.signOut().then(() => {
+      console.log('Sign out complete.')
       localStorage.removeItem('user');
       this.userData = null;
       this.router.navigate(['/']);
      });
    }
 
+/*
    private updateUserData(user) {
      // Sets user data to firestore on login
      const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${user.uid}`);
@@ -106,4 +108,5 @@ export class AuthService {
      return userRef.set(data, {merge: true });
      
    }
+   */
 }
