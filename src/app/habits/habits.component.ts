@@ -4,7 +4,7 @@ import { Habit, Habit_Record, Recent_Date } from '../habit';
 
 import { HabitService } from '../habit.service';
 
-import {AuthService } from '../auth.service';
+import { AuthService } from '../auth.service';
 
 import { filter } from 'rxjs/operators';
 
@@ -42,8 +42,8 @@ export class HabitsComponent implements OnInit {
             ...e.payload.doc.data()
           } as Habit;
         }).filter(item => {
-            console.log('GetHabits: ' + auth.user.uid)
-            return item.uid === auth.user.uid;
+            console.log('GetHabits: ' + this.auth.getUserId)
+            return item.uid === this.auth.user.getUserId;
           });  
         
         //habits => {

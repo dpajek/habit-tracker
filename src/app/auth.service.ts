@@ -64,6 +64,13 @@ export class AuthService {
      return (user !== null) ? true : false;
    }
 
+  getUserId(): string {
+    console.log('getUserId');
+    const user = JSON.parse(localStorage.getItem('user'));
+    console.log('uid: ' + user.uid);
+    return (user !== null) ? user.uid : '';
+  }
+
   googleSignin()  {
      const provider = new auth.GoogleAuthProvider();
      return this.oAuthLogin(provider);
