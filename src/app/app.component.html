@@ -16,8 +16,10 @@
   <nav>
   </nav>
   <router-outlet></router-outlet>
-  <div *ngIf="auth.userData">
-    <button class="button " mdbBtn (click)="auth.signOut()">Sign Out</button>
+  <div class="row">
+    <div class="col text-center" *ngIf="auth.userData">
+      <button class="button " mdbBtn (click)="auth.signOut()">Sign Out</button>
+    </div>
   </div>
-  <br><br>
+<br><br>
 </div>
