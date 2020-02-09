@@ -1,11 +1,12 @@
 <div class="container">
+  <br>
   <div class="row align-items-center">
     <div class="col ">
       <h1>Habit Tracker</h1>
     </div>
     
     <div *ngIf="auth.userData" class="col-auto">
-      <img src="{{auth.userData.photoURL}}" class="rounded-circle  img-fluid z-depth-1" alt="{{auth.userData.displayName}}" style="width: 50px; border: 1">
+      <img src="{{auth.userData.photoURL}}" class="rounded-circle  img-fluid z-depth-1" alt="{{auth.userData.displayName}}" style="width: 60px">
     </div>
 
   </div>
@@ -16,7 +17,7 @@
   </nav>
   <router-outlet></router-outlet>
   <div *ngIf="auth.userData">
-    <button class="button" (click)="auth.signOut()">Sign Out</button>
+    <button class="button " mdbBtn (click)="auth.signOut()">Sign Out</button>
   </div>
   <br><br>
 </div>
