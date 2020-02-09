@@ -1,7 +1,12 @@
 <div class="container">
   <br>
   <div class="row align-items-center">
-    <div class="col ">
+    <div class="col " *ngIf="auth.userData">
+      <h1>Habit Tracker</h1>
+    </div>
+
+    <div class="col text-center " *ngIf="!auth.userData">
+      <br>
       <h1>Habit Tracker</h1>
     </div>
     
