@@ -7,3 +7,18 @@ hr {
   background-color: #007000;
   height: 3px;
 }
+
+html,
+body,
+header,
+#intro {
+  height: 100%;
+}
+
+#intro {
+  background-color: #007000;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
