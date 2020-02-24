@@ -1,11 +1,19 @@
 <br>
 
-<div *ngIf="habits.length > 0">
-  <h2>Yes Habits</h2>
+<div *ngIf="auth.userData && habits.length > 0; else noHabits">
+  <h2>{{auth.userData.displayName}}'s Habits</h2>
 </div>
 
-<div *ngIf="auth.userData">
-  <h2>{{auth.userData.displayName}}'s Habits</h2>
+<ng-template #noHabits>
+  <p>
+    <i>
+    You aren't currently tracking any habits.
+    </i>
+  </p>
+</ng-template>
+
+<div *ngIf="habits.length > 0">
+  <h2>Yes Habits</h2>
 </div>
 
 <ul class="list-group">
