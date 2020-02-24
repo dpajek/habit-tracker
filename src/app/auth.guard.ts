@@ -24,6 +24,7 @@ constructor(
     console.log('canActivate1');
     if(this.auth.isLoggedIn !== true) {
       console.log('Access Denied -- Login required');
+      this.router.navigate(['/login']);;
       //this.router.navigate(['sign-in']);;
       return false;
     }
