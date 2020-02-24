@@ -77,7 +77,7 @@
         <textarea mdbInput #habitDescriptionV placeholder="" type="text" class="md-textarea form-control" rows="1" id="habitDescription" length="120" mdbCharCounter aria-describedby="habitDescriptionBlock"></textarea>
         <label for="habitDescription">Details</label>
         <small id="habitDescriptionBlock" class="form-text text-muted">
-          Improve your chances of success by writing an implementaiton intention: I will [BEHAVIOR] at [TIME] in [LOCATION].
+          Improve your chances of success by writing an implementaiton intention: "I will [BEHAVIOR] at [TIME] in [LOCATION]".
         </small>
       </div>
     </div>
@@ -91,3 +91,37 @@
 </li>
 </ul>
 <br>
+
+<button type="button" mdbBtn color="default" rounded="true" data-toggle="modal" data-target="#habitInfo" (click)="frame.show()"
+  mdbWavesEffect>More Info</button>
+
+<div mdbModal #frame="mdbModal" class="modal fade top" id="frameModalTop" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-notify modal-info" role="document">
+    <!--Content-->
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header">
+        <p class="heading lead">Creating Effective Habits</p>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="frame.hide()">
+          <span aria-hidden="true" class="white-text">&times;</span>
+        </button>
+      </div>
+
+      <!--Body-->
+      <div class="modal-body">
+        <div class="text-center">
+          <p>Create effective habits.... blah blah</p>
+          <p>Create effective habits.... blah blah</p>
+        </div>
+      </div>
+
+      <!--Footer-->
+      <div class="modal-footer justify-content-center">
+        <a type="button" mdbBtn color="primary" outline="true" class="waves-effect" mdbWavesEffect (click)="frame.hide()">Got it</a>
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
