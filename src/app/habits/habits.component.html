@@ -1,4 +1,9 @@
 <br>
+
+<div *ngIf="habits">
+  <h2>Yes Habits</h2>
+</div>
+
 <div *ngIf="auth.userData">
   <h2>{{auth.userData.displayName}}'s Habits</h2>
 </div>
