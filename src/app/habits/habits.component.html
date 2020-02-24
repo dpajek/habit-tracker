@@ -74,8 +74,11 @@
       </div>
       <!-- Material input -->
       <div class="md-form form-group">
-        <textarea mdbInput #habitDescriptionV placeholder="Try describing your habit with an implementaiton intention: I will [BEHAVIOR] at [TIME] in [LOCATION]." type="text" class="md-textarea form-control" rows="1" id="habitDescription" length="120" mdbCharCounter></textarea>
+        <textarea mdbInput #habitDescriptionV placeholder="" type="text" class="md-textarea form-control" rows="1" id="habitDescription" length="120" mdbCharCounter aria-describedby="habitDescriptionBlock"></textarea>
         <label for="habitDescription">Details</label>
+        <small id="habitDescriptionBlock" class="form-text text-muted">
+          Improve your chances of success by writing an implementaiton intention: I will [BEHAVIOR] at [TIME] in [LOCATION].
+        </small>
       </div>
     </div>
     <!-- Grid column -->
