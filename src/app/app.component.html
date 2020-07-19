@@ -20,7 +20,7 @@
               Build powerful habits and unlock your potential 
             </h4>
 
-            <button type="button" class="btn btn-outline-white" href="#best-features">Read More</button>
+            <button type="button" mdbBtn class="btn btn-outline-white" (click)="auth.googleSignin()" ><i class="fab fa-google mr-2 fa-lg"></i> Sign in with Google</button>
 
           </div>
         </div>
@@ -29,6 +29,33 @@
   </div>
   <!--/Mask-->
 </header>
+
+
+<div class="container" *ngIf="auth.userData">
+  <br>
+  <div class="row align-items-center">
+    <div class="col ">
+      <h1>Habit Tracker</h1>
+    </div>
+    
+    <div class="col-auto">
+      <img src="{{auth.userData.photoURL}}" class="rounded-circle  img-fluid z-depth-1" alt="{{auth.userData.displayName}}" style="width: 60px">
+    </div>
+
+  </div>
+
+  <hr class="main_title">
+
+  <nav>
+  </nav>
+  <router-outlet></router-outlet>
+  <div class="row">
+    <div class="col text-center" >
+      <button class="button " mdbBtn (click)="auth.signOut()">Sign Out</button>
+    </div>
+  </div>
+<br><br>
+</div>
 
 <main class="mt-5" *ngIf="!auth.userData">
   <div class="container">
@@ -122,36 +149,6 @@
 
 
 
-<div class="container">
-  <br>
-  <div class="row align-items-center">
-    <div class="col " *ngIf="auth.userData">
-      <h1>Habit Tracker</h1>
-    </div>
-
-    <div class="col text-center " *ngIf="!auth.userData">
-      <br>
-      <h1>Habit Tracker</h1>
-    </div>
-    
-    <div *ngIf="auth.userData" class="col-auto">
-      <img src="{{auth.userData.photoURL}}" class="rounded-circle  img-fluid z-depth-1" alt="{{auth.userData.displayName}}" style="width: 60px">
-    </div>
-
-  </div>
-
-  <hr class="main_title">
-
-  <nav>
-  </nav>
-  <router-outlet></router-outlet>
-  <div class="row">
-    <div class="col text-center" *ngIf="auth.userData">
-      <button class="button " mdbBtn (click)="auth.signOut()">Sign Out</button>
-    </div>
-  </div>
-<br><br>
-</div>
 
 <!-- Footer -->
 <footer class="page-footer unique-color-dark">
