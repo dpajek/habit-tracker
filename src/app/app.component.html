@@ -170,42 +170,44 @@
           <!--Second column-->
           <div class="col-md-6 col-lg-9 mx-auto mb-4 text-left">
               
-            <!-- Form contact -->
-            <form class="p-3 grey-text">
               <div class="container">
-                <div class="row">
+            <!-- Form contact -->
+            <form id="contact-form" name="contact-form" class="p-3 grey-text">
+              
+                <div class="form-row">
                   <div class="col-lg-6">
 
-                    <div class="md-form form-sm "> <i class="fas fa-user prefix"></i>
-                      <input type="text" id="form3" class="form-control form-control-sm">
-                      <label for="form3">Your name</label>
+                    <div class="md-form form-sm mb-0"> <i class="fas fa-user prefix"></i>
+                      <input mdbInput type="text" id="name" name="name" class="form-control form-control-sm">
+                      <label for="name" class="">Your name</label>
                     </div>
                     <div class="md-form form-sm"> <i class="fas fa-envelope prefix"></i>
-                      <input type="text" id="form2" class="form-control form-control-sm">
-                      <label for="form2">Your email</label>
+                      <input mdbInput type="text" id="email" name="email" class="form-control form-control-sm">
+                      <label for="email">Your email</label>
                     </div>
                     <div class="md-form form-sm"> <i class="fas fa-tag prefix"></i>
-                      <input type="text" id="form32" class="form-control form-control-sm">
-                      <label for="form32">Subject</label>
+                      <input mdbInput type="text" id="subject" name="subject" class="form-control form-control-sm">
+                      <label for="subject">Subject</label>
                     </div>
             
                   </div>
                   <div class="col-lg-6">
 
-                    <div class="md-form form-sm"> <i class="fas fa-pencil-alt prefix"></i>
-                      <textarea type="text" id="form8" class="md-textarea form-control form-control-sm" rows="4"></textarea>
-                      <label for="form8">Your message</label>
+                    <div class="md-form form-sm mb-0"> <i class="fas fa-pencil-alt prefix"></i>
+                      <textarea mdbInput type="text" id="message" name="message" class="md-textarea form-control form-control-sm" rows="4"></textarea>
+                      <label for="message">Your message</label>
                     </div>
-                    <div class="text-right mt-4">
-                      <button class="btn btn-primary">Send <i class="far fa-paper-planeml-1"></i></button>
-                    </div>
+                    
 
                   </div>
                 </div>
-              </div>
+              
             </form>
-
+            <div class="text-right mt-4">
+              <button class="btn btn-primary">Send <i class="far fa-paper-planeml-1"></i></button>
+            </div>
           <!-- Form contact -->
+</div>
 
           </div>
           <!--/.Second column-->
