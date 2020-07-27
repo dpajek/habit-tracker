@@ -18,3 +18,11 @@ export class Recent_Date {
     date: Date;
     day_letter: string; // used as an indicator of day of week
 }
+
+export class FormFeedback {
+    name: string; 
+    email: string;
+    subject: string;
+    message: string; 
+}
+

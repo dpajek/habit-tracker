@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { Habit, Habit_Record } from './habit';
+import { Habit, Habit_Record, FormFeedback } from './habit';
 
 //import { HABITS } from './mock-habits';
 
@@ -19,6 +19,7 @@ export class HabitService {
   */
   private habitsUrl = 'api/habits';  // URL to web api
   private habitRecordUrl = 'api/habit_record';  // URL to web api
+  //private feedbackUrl = 'api/mail';  // URL to web api
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -83,6 +84,13 @@ getHabitRecordsHabitId (habit_id: string): Observable<any[]> {
   //addHabit(habit: Habit): Observable<Habit> {
   addHabit(habit: Habit) {
     return this.firestore.collection('habits').add(habit);
+    /*return this.http.post<Habit>(
+      this.habitsUrl, habit, this.httpOptions
+    ); */
+  }
+
+  addFeedback(formContents: FormFeedback) {
+    return this.firestore.collection('mail').add(formContents);
     /*return this.http.post<Habit>(
       this.habitsUrl, habit, this.httpOptions
     ); */
