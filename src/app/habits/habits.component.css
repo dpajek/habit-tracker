@@ -11,6 +11,14 @@ span.accordian {
   font-size: 1.2em;
 }
 
+a.modal_link { 
+            color:  #40a028;
+        }
+
+a.modal_link:hover { 
+            color:  #007000;
+        }
+
 p { 
             color:  #666;
         } 
@@ -62,6 +70,22 @@ p {
     line-height: 20px;
     -moz-border-radius: 10px; 
     border-radius: 10px;
+    background-color: #40a028;    
+    color: #FFF;
+    text-align: center;
+    -webkit-box-shadow: 0px 0px 0px 2px #40a028;
+    -moz-box-shadow: 0px 0px 0px 2px #40a028;
+    box-shadow: 0px 0px 0px 2px #40a028;
+    font-size: 0.7em;
+}
+
+.round.modal_check {
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+    line-height: 16px;
+    -moz-border-radius: 8px; 
+    border-radius: 8px;
     background-color: #40a028;    
     color: #FFF;
     text-align: center;

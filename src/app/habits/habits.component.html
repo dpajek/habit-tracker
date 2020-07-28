@@ -77,7 +77,7 @@
         <textarea mdbInput #habitDescriptionV type="text" class="md-textarea form-control" rows="1" id="habitDescription" length="120" mdbCharCounter aria-describedby="habitDescriptionBlock"></textarea>
         <label for="habitDescription">Details</label>
         <small id="habitDescriptionBlock" class="form-text text-muted">
-          Improve your chances of success by writing an implementaiton intention: "I will [BEHAVIOR] at [TIME] in [LOCATION]".
+          <i>Try: "I will [BEHAVIOR] at [TIME] in [LOCATION]"</i>
         </small>
       </div>
     </div>
@@ -94,12 +94,12 @@
 
 <div mdbModal #frame="mdbModal" class="modal fade top" id="frameModalTop" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
   aria-hidden="true">
-  <div class="modal-dialog modal-notify modal-info" role="document">
+  <div class="modal-dialog modal-notify" role="document">
     <!--Content-->
     <div class="modal-content">
       <!--Header-->
       <div class="modal-header">
-        <p class="heading lead">How to Create Effective Habits</p>
+        <p class="heading lead grey-text">How to Create Effective Habits</p>
 
         <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="frame.hide()">
           <span aria-hidden="true" class="white-text">&times;</span>
@@ -109,21 +109,18 @@
       <!--Body-->
       <div class="modal-body">
         <div class="text-full">
-          <ul>
-            <li>
-              Name your habit: e.g., Afternoon Jog, Write 200 Words, Meditate, In Bed at 10PM, etc.
+          <ul class="fa-ul">
+            <li class="my-3">
+              <i class="fas fa-check fa-sm white-text round modal_check mr-2"></i>Name your habit: <i>Write Daily</i>
             </li>
-            <li>
-              Optimize for starting with as much detail as possible: "I will type 200 words, as soon as I finish dinner, from my living room couch" is better than "write 200 words each night".
+            <li class="my-3">
+              <i class="fas fa-check fa-sm white-text round modal_check mr-2"></i>Be detailed: <i>I will write 200 words, after dinner, sitting in my living room</i>
             </li>
-            <li>
-              Mark your habit as complete each day... and don't break the chain!
+            <li class="my-3">
+              <i class="fas fa-check fa-sm white-text round modal_check mr-2"></i>Make it easy and stick to it!
             </li>
-            <li>
-              Learn more about creating effective habits at <a href="https://jamesclear.com/" target="_blank">jamesclear.com</a>.
-            </li>
-            <li>
-              For a quick summary, check out James Clear's <a href="https://s3.amazonaws.com/jamesclear/Atomic+Habits/Habits+Cheat+Sheet.pdf" target="_blank">Habits Cheat Sheet</a>.
+            <li class="my-3">
+              <i class="fas fa-check fa-sm white-text round modal_check mr-2"></i>Learn more about effective habits at <a class="modal_link" href="https://jamesclear.com/" target="_blank">jamesclear.com</a>. (For a quick summary, check out their <a class="modal_link" href="https://s3.amazonaws.com/jamesclear/Atomic+Habits/Habits+Cheat+Sheet.pdf" target="_blank">Habits Cheat Sheet</a>.)
             </li>
           </ul>
         </div>
@@ -131,7 +128,7 @@
 
       <!--Footer-->
       <div class="modal-footer justify-content-center">
-        <a type="button" mdbBtn color="primary" outline="true" class="waves-effect" mdbWavesEffect (click)="frame.hide()">Got it</a>
+        <a type="button" mdbBtn color="green" outline="true" class="waves-effect" mdbWavesEffect (click)="frame.hide()">Got it</a>
       </div>
     </div>
     <!--/.Content-->
