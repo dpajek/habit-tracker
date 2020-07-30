@@ -6,6 +6,6 @@ Users can login with a Google account and create new habits. Each day users can 
 
 This responsive app is created with Angular 7, mdbootstrap, and hosted on Firebase.
 
-[Start Tracking your Habits (free)](https://habit-tracker-38e6c.web.app/habits)
+[Start Tracking your Habits (free)](https://habittracker.me)
 
 Feedback appreciated.
