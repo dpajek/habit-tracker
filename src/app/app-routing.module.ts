@@ -13,8 +13,8 @@ const routes: Routes = [
   { path: 'habits', component: HabitsComponent, canActivate: [AuthGuard] },
   { path: 'detail/:id', component: HabitDetailComponent, canActivate: [AuthGuard] },
   { path: 'edit/:id', component: HabitDetailEditComponent, canActivate: [AuthGuard] },
-  { path: '', redirectTo: '/login', pathMatch: 'full' }//,
-  //{ path: '**', redirectTo: '/login'}
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '**', redirectTo: '/login'}
 ];
 
 @NgModule({
